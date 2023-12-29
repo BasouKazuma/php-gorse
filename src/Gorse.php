@@ -26,6 +26,15 @@ final class Gorse
     }
 
     /**
+     * @param  User[]          $users
+     * @throws GuzzleException
+     */
+    public function batchInsertUser(array $users): RowAffected
+    {
+        return RowAffected::fromJSON($this->request('POST', '/api/users', $users));
+    }
+
+    /**
      * @throws GuzzleException
      */
     public function getUser(string $user_id): User
